@@ -70,7 +70,13 @@ def count():
 
     # calculating accuracy
     gross_wpm = totalwords/elapsedtimeInMinutes
-    accuracy = (wpm/gross_wpm)*100
+    
+    try:
+        accuracy = (wpm/gross_wpm)*100
+    except:
+        print("You didn't type anything")
+        return
+    
     accuracy = round(accuracy)
     # updating the accuracy count label
     accuracy_countlabel.config(text=str(accuracy)+'%')
@@ -108,7 +114,7 @@ def reset():
     elapsedtimeInMinutes=0
 
     elapsed_timer_label.config(text='0')
-    remaining_timer_label.config(text='0')
+    remaining_timer_label.config(text=timelimit)
     wpm_timer_label.config(text='0')
     accuracy_countlabel.config(text='0')
     total_words_count_label.config(text='0')
